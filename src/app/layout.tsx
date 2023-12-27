@@ -8,7 +8,6 @@ export async function generateMetadata(): Promise<Metadata> {
       template: '%s | Indigo',
       default: 'Indigo',
     },
-    manifest: `/manifest.webmanifest`,
     description: '',
     icons: [
       {
