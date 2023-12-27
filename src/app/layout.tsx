@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import { headers } from 'next/headers';
 //Internal app
 import { RootLayoutProps } from '@/interfaces';
+import axios from 'axios';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -21,17 +21,16 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function getData() {
-  const headersList = headers();
-  console.log('🚀 ~ file: page.tsx:28 ~ getData ~ headersList:', headersList);
-  // const authHeader = headers().get('authorization');
+async function getProjects() {
+  const res = await axios.post('/api/conectApi');
+  const projects = res;
 
-  return '...';
+  return projects;
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const data = await getData();
-  console.log('🚀 ~ file: layout.tsx:33 ~ RootLayout ~ data:', data);
+  const projects = await getProjects();
+  console.log('🚀 ~ file: layout.tsx:33 ~ RootLayout ~ data:', projects);
   return (
     <html lang="es">
       <body>{children}</body>
