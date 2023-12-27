@@ -47,25 +47,6 @@ export default function Signin() {
     },
   };
 
-  const apiCall = async () => {
-    await fetch('/api/dataBelcorp', {
-      method: 'POST',
-      body: JSON.stringify({ hello: 'world' }),
-    });
-  };
-  // useEffect(() => {
-  //   const apiCall = async () => {
-  //     await fetch('/api/getData', {
-  //       method: 'POST',
-  //       body: JSON.stringify({ hello: 'world' }),
-  //     });
-  //   };
-
-  //   return () => {
-  //     apiCall();
-  //   };
-  // }, []);
-
   return (
     <Grid container columns={12} sx={{ display: 'flex', minHeight: '100%' }}>
       <Grid item lg={7} sx={{ px: { xs: 2, sm: 0 }, display: { xs: 'none', lg: 'block' } }}>
@@ -122,9 +103,7 @@ export default function Signin() {
                 </Typography>
               </Link>
 
-              <Button variant="contained" onClick={apiCall}>
-                Iniciar sesión
-              </Button>
+              <Button variant="contained">Iniciar sesión</Button>
             </Stack>
           </Box>
         </Box>
