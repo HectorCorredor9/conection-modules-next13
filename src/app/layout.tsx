@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getData() {
-  const res = await axios.post('/api/conectApi');
+  const res = await axios.post('https://conection-modules-next13.vercel.app/api/conectApi');
 
   return res;
 }
