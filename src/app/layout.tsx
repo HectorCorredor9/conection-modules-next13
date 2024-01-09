@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 //Internal app
 import { RootLayoutProps } from '@/interfaces';
+import axios from 'axios';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -21,13 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getData() {
-  const res = await fetch('/api/conectApi');
+  const res = await axios.post('/api/conectApi');
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
+  return res;
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
