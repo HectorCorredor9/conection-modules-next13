@@ -18,7 +18,6 @@ import {
 import bg from '%/images/bg.png';
 import arte from '%/images/arte.png';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 // async function getData() {
 //   const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
@@ -33,36 +32,15 @@ export default function Signin() {
   // const data = await getData();
   // console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
 
-  const [consultantId, setConsultantId] = useState('');
-  const [country, setCountry] = useState('');
+  const handleSubmit = async () => {
+    const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error));
+    console.log('🚀 ~ file: page.tsx:66 ~ Signin ~ consultantId, res:', res);
 
-  useEffect(() => {
-    const handleSubmit = async () => {
-      const submitData = { consultantId, country };
-
-      try {
-        const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata', {
-          method: 'POST',
-          body: JSON.stringify(submitData),
-          headers: {
-            'content-type': 'application/json',
-          },
-        });
-        console.log(res);
-        if (res.ok) {
-          console.log('Yeai!');
-        } else {
-          console.log('Oops! Something is wrong.');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-      setConsultantId('');
-      setCountry('');
-    };
-
-    handleSubmit();
-  }, [consultantId, country]);
+    return res;
+  };
 
   const styleLabel = {
     position: 'relative',
@@ -140,7 +118,9 @@ export default function Signin() {
                 </Typography>
               </Link>
 
-              <Button variant="contained">Iniciar sesión</Button>
+              <Button variant="contained" onClick={handleSubmit}>
+                Iniciar sesión
+              </Button>
             </Stack>
           </Box>
         </Box>
