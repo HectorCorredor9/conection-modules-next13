@@ -17,18 +17,18 @@ import bg from '%/images/bg.png';
 import arte from '%/images/arte.png';
 import Link from 'next/link';
 
-async function getData() {
-  const res = await fetch('http://localhost:3000/api/conectApi')
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error('Error:', error));
+// async function getData() {
+//   const res = await fetch('http://localhost:3000/api/conectApi')
+//     .then((response) => response.json())
+//     .then((data) => console.log(data))
+//     .catch((error) => console.error('Error:', error));
 
-  return res;
-}
+//   return res;
+// }
 
 export default async function Signin() {
-  const data = await getData();
-  console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
+  // const data = await getData();
+  // console.log("🚀 ~ file: page.tsx:31 ~ Signin ~ data:", data)
 
   const styleLabel = {
     position: 'relative',
@@ -54,7 +54,6 @@ export default async function Signin() {
     <Grid container columns={12} sx={{ display: 'flex', minHeight: '100%' }}>
       <Grid item lg={7} sx={{ px: { xs: 2, sm: 0 }, display: { xs: 'none', lg: 'block' } }}>
         <Box sx={{ position: 'relative', height: '100vh' }}>
-          {data}
           <Box sx={{ position: 'absolute', zIndex: 1, display: 'flex', alignItems: 'center', height: '100%' }}>
             <Image src={arte} alt="Arte Cliente" />
           </Box>
