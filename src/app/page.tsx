@@ -32,15 +32,15 @@ export default function Signin() {
   // const data = await getData();
   // console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
 
-  const handleSubmit = async () => {
-    const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error('Error:', error));
-    console.log('🚀 ~ file: page.tsx:66 ~ Signin ~ consultantId, res:', res);
+  // const handleSubmit = async () => {
+  //   const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error('Error:', error));
+  //   console.log('🚀 ~ file: page.tsx:66 ~ Signin ~ consultantId, res:', res);
 
-    return res;
-  };
+  //   return res;
+  // };
 
   const styleLabel = {
     position: 'relative',
@@ -118,9 +118,7 @@ export default function Signin() {
                 </Typography>
               </Link>
 
-              <Button variant="contained" onClick={handleSubmit}>
-                Iniciar sesión
-              </Button>
+              <Button variant="contained">Iniciar sesión</Button>
             </Stack>
           </Box>
         </Box>
