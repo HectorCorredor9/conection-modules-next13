@@ -17,18 +17,18 @@ import bg from '%/images/bg.png';
 import arte from '%/images/arte.png';
 import Link from 'next/link';
 
-// async function getData() {
-//   const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
-//     .then((response) => response.json())
-//     .then((data) => console.log(data))
-//     .catch((error) => console.error('Error:', error));
+async function getData() {
+  const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error:', error));
 
-//   return res;
-// }
+  return res;
+}
 
 export default async function Signin() {
-  // const data = await getData();
-  // console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
+  const data = await getData();
+  console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
 
   // const handleSubmit = async () => {
   //   const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')

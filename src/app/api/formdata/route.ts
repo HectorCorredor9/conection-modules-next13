@@ -16,15 +16,10 @@ import { NextResponse, NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
   if (request.method === 'POST') {
-    try {
-      const datosDelCuerpo = request.body;
+    const datosDelCuerpo = request.body;
 
-      console.log('Datos del cuerpo de la solicitud:', datosDelCuerpo);
+    console.log('Datos del cuerpo de la solicitud:', datosDelCuerpo);
 
-      return NextResponse.json(datosDelCuerpo);
-    } catch (error) {
-      console.error('Error al procesar la solicitud POST:', error);
-      return NextResponse.json('no se obtuvo datos');
-    }
+    return NextResponse.json(datosDelCuerpo);
   }
 }
