@@ -26,7 +26,7 @@ import Link from 'next/link';
 //   return res;
 // }
 
-export default function Signin() {
+export default async function Signin() {
   // const data = await getData();
   // console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
 
