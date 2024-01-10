@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(req: Request) {
+export async function POST(req: Request, res: any) {
+  console.log('🚀 ~ file: route.ts:4 ~ POST ~ res:', res);
   console.log('🚀 ~ file: route.ts:4 ~ POST ~ req:', req.headers);
   console.log('🚀 ~ file: route.ts:4 ~ POST ~ req:', req.formData);
   console.log('🚀 ~ file: route.ts:4 ~ POST ~ req:', req.body);
