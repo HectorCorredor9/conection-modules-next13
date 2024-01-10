@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
@@ -16,19 +18,51 @@ import {
 import bg from '%/images/bg.png';
 import arte from '%/images/arte.png';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-async function getData() {
-  const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error('Error:', error));
+// async function getData() {
+//   const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
+//     .then((response) => response.json())
+//     .then((data) => console.log(data))
+//     .catch((error) => console.error('Error:', error));
 
-  return res;
-}
+//   return res;
+// }
 
-export default async function Signin() {
-  const data = await getData();
-  console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
+export default function Signin() {
+  // const data = await getData();
+  // console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
+
+  const [consultantId, setConsultantId] = useState('');
+  const [country, setCountry] = useState('');
+
+  useEffect(() => {
+    const handleSubmit = async () => {
+      const submitData = { consultantId, country };
+
+      try {
+        const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata', {
+          method: 'POST',
+          body: JSON.stringify(submitData),
+          headers: {
+            'content-type': 'application/json',
+          },
+        });
+        console.log(res);
+        if (res.ok) {
+          console.log('Yeai!');
+        } else {
+          console.log('Oops! Something is wrong.');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      setConsultantId('');
+      setCountry('');
+    };
+
+    handleSubmit();
+  }, [consultantId, country]);
 
   const styleLabel = {
     position: 'relative',
