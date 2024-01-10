@@ -17,18 +17,18 @@ import bg from '%/images/bg.png';
 import arte from '%/images/arte.png';
 import Link from 'next/link';
 
-// async function getData() {
-//   const res = await fetch('http://localhost:3000/api/conectApi')
-//     .then((response) => response.json())
-//     .then((data) => console.log(data))
-//     .catch((error) => console.error('Error:', error));
+async function getData() {
+  const res = await fetch('http://localhost:3000/api/conectApi')
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error:', error));
 
-//   return res;
-// }
+  return res;
+}
 
 export default async function Signin() {
-  // const data = await getData();
-  // console.log("🚀 ~ file: page.tsx:31 ~ Signin ~ data:", data)
+  const data = await getData();
+  console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
 
   const styleLabel = {
     position: 'relative',
