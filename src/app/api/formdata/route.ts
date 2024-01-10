@@ -9,11 +9,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  console.log('🚀 ~ file: route.ts:4 ~ GET ~ request:', request.body);
-  const greeting = 'Hello World!!';
-  const json = {
-    greeting,
-  };
+  if (request.method === 'POST') {
+    try {
+      const datosDelCuerpo = request.body;
 
-  return NextResponse.json(json);
+      console.log('Datos del cuerpo de la solicitud:', datosDelCuerpo);
+
+      return NextResponse.json(datosDelCuerpo);
+    } catch (error) {
+      console.error('Error al procesar la solicitud POST:', error);
+    }
+  }
 }
