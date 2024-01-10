@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 //Internal app
 import { RootLayoutProps } from '@/interfaces';
-import axios from 'axios';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -21,15 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function getData() {
-  const res = await axios.post('https://conection-modules-next13.vercel.app/api/conectApi');
-
-  return res;
-}
-
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const data = await getData();
-  console.log('🚀 ~ file: layout.tsx:33 ~ RootLayout ~ data:', data);
   return (
     <html lang="es">
       <body>{children}</body>

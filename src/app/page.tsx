@@ -1,9 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { useState } from 'react';
-import Visibility from '@mui/icons-material/RemoveRedEye';
-// import axios from 'axios';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Box,
@@ -22,10 +17,18 @@ import bg from '%/images/bg.png';
 import arte from '%/images/arte.png';
 import Link from 'next/link';
 
-export default function Signin() {
-  const [showPassword, setShowPassword] = useState(false);
+async function getData() {
+  const res = await fetch('http://localhost:3000/api/conectApi')
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error:', error));
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  return res;
+}
+
+export default async function Signin() {
+  const data = await getData();
+  console.log('🚀 ~ file: page.tsx:31 ~ Signin ~ data:', data);
 
   const styleLabel = {
     position: 'relative',
@@ -51,6 +54,7 @@ export default function Signin() {
     <Grid container columns={12} sx={{ display: 'flex', minHeight: '100%' }}>
       <Grid item lg={7} sx={{ px: { xs: 2, sm: 0 }, display: { xs: 'none', lg: 'block' } }}>
         <Box sx={{ position: 'relative', height: '100vh' }}>
+          {data}
           <Box sx={{ position: 'absolute', zIndex: 1, display: 'flex', alignItems: 'center', height: '100%' }}>
             <Image src={arte} alt="Arte Cliente" />
           </Box>
@@ -85,11 +89,11 @@ export default function Signin() {
                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-password"
-                  type={showPassword ? 'text' : 'password'}
+                  type={'text'}
                   endAdornment={
                     <InputAdornment position="end">
-                      <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} edge="end">
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      <IconButton aria-label="toggle password visibility" edge="end">
+                        <VisibilityOff />
                       </IconButton>
                     </InputAdornment>
                   }
