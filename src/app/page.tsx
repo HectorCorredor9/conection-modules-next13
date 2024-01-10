@@ -18,7 +18,7 @@ import arte from '%/images/arte.png';
 import Link from 'next/link';
 
 async function getData() {
-  const res = await fetch('https://conection-modules-next13.vercel.app/api/conectApi')
+  const res = await fetch('https://conection-modules-next13.vercel.app/api/formdata')
     .then((response) => response.json())
     .then((data) => console.log(data))
     .catch((error) => console.error('Error:', error));
